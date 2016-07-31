@@ -15,10 +15,13 @@ fi
 if [ ! -z "$WEBROOT" ]; then
   webroot=$WEBROOT
   sed -i "s#root /var/www/html;#root ${webroot};#g" /etc/nginx/sites-available/default.conf
-  # Update webroot custom include path
-  sed -i "s#include /var/www/html/conf/\*;#include ${webroot}/conf/*;#g" /etc/nginx/sites-available/default.conf
 else
   webroot=/var/www/html
+fi
+
+# Update custom config include root
+if [ ! -z "$CONFROOT" ]; then
+  sed -i "s#include /var/www/conf/\*;#include ${confroot}/*;#g" /etc/nginx/sites-available/default.conf
 fi
 
 # Setup git variables
