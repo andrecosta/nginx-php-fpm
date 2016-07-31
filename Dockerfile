@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.4
 
 MAINTAINER ngineered <support@ngineered.co.uk>
 
@@ -46,8 +46,9 @@ RUN apk add --no-cache bash \
     gcc \
     musl-dev \
     linux-headers \
-    libffi-dev \
-    wkhtmltopdf &&\
+    libffi-dev && \
+
+    apk add wkhtmltopdf --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ --allow-untrusted && \
     
     mkdir -p /etc/nginx && \
     mkdir -p /var/www/app && \
