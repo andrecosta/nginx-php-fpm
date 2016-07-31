@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:edge
 
 MAINTAINER ngineered <support@ngineered.co.uk>
 
@@ -35,6 +35,7 @@ RUN apk add --no-cache bash \
     php5-phar \
     php5-soap \
     php5-dom \
+    php5-calendar \
     python \
     python-dev \
     py-pip \
@@ -45,7 +46,9 @@ RUN apk add --no-cache bash \
     gcc \
     musl-dev \
     linux-headers \
-    libffi-dev &&\
+    libffi-dev \
+    wkhtmltopdf &&\
+    
     mkdir -p /etc/nginx && \
     mkdir -p /var/www/app && \
     mkdir -p /run/nginx && \
