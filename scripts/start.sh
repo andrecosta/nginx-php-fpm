@@ -15,6 +15,8 @@ fi
 if [ ! -z "$WEBROOT" ]; then
   webroot=$WEBROOT
   sed -i "s#root /var/www/html;#root ${webroot};#g" /etc/nginx/sites-available/default.conf
+  # Update webroot custom include path
+  sed -i "s#include /var/www/html/conf/\*;#include ${webroot}/conf/*;#g" /etc/nginx/sites-available/default.conf
 else
   webroot=/var/www/html
 fi
