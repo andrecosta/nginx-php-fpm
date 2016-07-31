@@ -21,6 +21,7 @@ fi
 
 # Update custom config include root
 if [ ! -z "$CONFROOT" ]; then
+  confroot=$CONFROOT
   sed -i "s#include /var/www/conf/\*;#include ${confroot}/*;#g" /etc/nginx/sites-available/default.conf
 fi
 
